@@ -63,17 +63,24 @@
         list.forEach((item) => {
           item.classList.remove('active');
         });
-        console.log(e.target.parentNode);
-
-        let target = e.target;
-        while (target.tagName.toLowerCase() !== 'ul') {
-          if (target.tagName.toLowerCase() === 'li') {
-            break;
-          } else {
-            target = target.parentNode;
+        let index = 0;
+        e.path.map((value, _index) => {
+          if (value === ul) {
+            index = _index;
           }
-        }
+        });
+        const target = e.path[index - 1];
         target.classList.add('active');
+        console.log(e.path);
+        // let target = e.target;
+        // while (target.tagName.toLowerCase() !== 'ul') {
+        //   if (target.tagName.toLowerCase() === 'li') {
+        //     break;
+        //   } else {
+        //     target = target.parentNode;
+        //   }
+        // }
+        // target.classList.add('active');
       }
     </script>
 
